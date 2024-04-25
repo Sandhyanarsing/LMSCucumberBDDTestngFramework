@@ -36,6 +36,7 @@ public class POM_LoginPage {
 		}
 		
 		public void clickOnLoginBtn() {
+			
 			 ElementUtil.clickOnElement(driver, LoginPage_loginBtn, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 			 
 		}
