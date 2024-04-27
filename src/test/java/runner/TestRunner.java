@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(tags="@InvalidUrl",
+@CucumberOptions(tags="",
 		         features = "src/test/resources/features/Login.feature", 
                  glue = {"stepDefinitions","appHooks" }, 
                  monochrome = true, 
