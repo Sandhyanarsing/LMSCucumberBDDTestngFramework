@@ -27,7 +27,7 @@ public class Hooks {
 	private Properties prop;
 
 	@Before
-	public void setUp() {
+	public void setUp(Scenario scenario) {
 		//Get Browser type from config file
 		prop = ConfigReader.getPropertyObject();
 		String browseName = prop.getProperty("browser");		
@@ -35,7 +35,11 @@ public class Hooks {
 		dFactory = new DriverFactory();
 		driver = dFactory.initializeDriver(browseName);
 		LoggerLoad.info("@BeforeHook:-Initializing driver for browser :"+browseName);
-		driver.get(prop.getProperty("url"));
+		//condition check for valid/Invalid url flow validation
+		if(!scenario.getName().equalsIgnoreCase("Validating invalid url flow for login")) 
+		{
+			driver.get(prop.getProperty("url"));
+		}
 		//this time will help to stabilize code in parallel execution
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constant.IMPLICIT_PAGE_LOAD));
 		LoggerLoad.info("@BeforeHook:-Login pagr url opened successfully");

@@ -1,5 +1,6 @@
 package utilities;
 import pageObjects.POM_LoginPage;
+import pageObjects.POM_ProgramPage;
 
 
 public class PicoDependencyInjector {
@@ -11,11 +12,11 @@ public class PicoDependencyInjector {
 	 
 	 public ExcelReader excelreader;
 	 public POM_LoginPage loginPage;
+	 public POM_ProgramPage programPage;
 	 public String loginPageTitle;
 	 
 	 public String validUsername;
 	 public String validPassword;
-	 public String loggedInUsername;
-	 public	String registredUserName;
+	 
 	 
 }

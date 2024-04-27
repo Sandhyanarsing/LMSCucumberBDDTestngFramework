@@ -1,11 +1,18 @@
 package pageObjects;
 
+import java.time.Duration;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import driverFactory.DriverFactory;
+import utilities.ConfigReader;
 import utilities.Constant;
 import utilities.ElementUtil;
+import utilities.LoggerLoad;
 
 
 public class POM_LoginPage {
@@ -36,8 +43,16 @@ public class POM_LoginPage {
 		}
 		
 		public void clickOnLoginBtn() {
+			
 			 ElementUtil.clickOnElement(driver, LoginPage_loginBtn, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 			 
+		}
+		
+		public void verifyInvalidAppURL() {
+			
+			Properties prop = ConfigReader.getPropertyObject();			
+			driver.get(prop.getProperty("invalidUrl"));
+			
 		}
 		
 		

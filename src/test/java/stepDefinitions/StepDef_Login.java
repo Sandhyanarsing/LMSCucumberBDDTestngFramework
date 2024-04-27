@@ -44,5 +44,18 @@ public class StepDef_Login {
 		Assert.assertEquals(picoDepInj.loginPage.getLoginPageTitle(), "LMS");
 		
 	}
+	
+	
+	@When("admin enters inValid app url")
+	public void admin_enters_in_valid_app_url() {
+		picoDepInj.loginPage= new POM_LoginPage(DriverFactory.getDriver());
+		picoDepInj.loginPage.verifyInvalidAppURL();
+	}
+
+	@Then("LMS app should throw {int} error")
+	public void lms_app_should_throw_error(Integer int1) {
+	    
+	}
+
 
 }
