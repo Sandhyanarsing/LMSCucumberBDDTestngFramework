@@ -14,7 +14,7 @@ import io.cucumber.java.en.When;
 public class StepDef_Login {
 	
 	
-	private PicoDependencyInjector picoDepInj;
+	PicoDependencyInjector picoDepInj;
 
 	public StepDef_Login(PicoDependencyInjector picoDepInj) {
 
