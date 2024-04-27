@@ -163,33 +163,7 @@ public class StepDef_Program {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new io.cucumber.java.PendingException();
 	}
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	@When("validate the text and pagination icon below the data table of program page")
 	public void validate_the_text_and_pagination_icon_below_the_data_table_of_program_page() {
 	    // Write code here that turns the phrase above into concrete actions
