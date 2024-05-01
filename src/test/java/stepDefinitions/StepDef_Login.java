@@ -1,12 +1,9 @@
 package stepDefinitions;
 
 import utilities.PicoDependencyInjector;
-
 import org.testng.Assert;
-
 import driverFactory.DriverFactory;
 import pageObjects.POM_LoginPage;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

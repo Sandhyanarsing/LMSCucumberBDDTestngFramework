@@ -37,8 +37,6 @@ public static WebElement waitForElementClickablity(WebDriver driver, WebElement 
 		return webElement;
 	}
 
-
-
   public static void implicitPageWait(WebDriver driver) {	
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constant.IMPLICIT_PAGE_LOAD));//10sec
@@ -78,7 +76,6 @@ public static WebElement waitForElementClickablity(WebDriver driver, WebElement 
 		   }   
 		  }
 		 }
-	
 
 public static void clickOnElement(WebDriver driver, WebElement element, long durationInSeconds) {
 	

@@ -15,8 +15,9 @@ public class PicoDependencyInjector {
 	 public POM_ProgramPage programPage;
 	 public String loginPageTitle;
 	 
-	 public String validUsername;
-	 public String validPassword;
+	 public String updatedPrgName;
+	 public String updatedPrgDesc;
+	 public String deletedPrgName;
 	 
 	 
 }
