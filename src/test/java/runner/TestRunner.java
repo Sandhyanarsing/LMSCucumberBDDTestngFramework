@@ -5,8 +5,8 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(tags="@InvalidUrl",
-		         features = "src/test/resources/features/Login.feature", 
+@CucumberOptions(tags="",
+		         features = "src/test/resources/features/ProgramModule.feature", 
                  glue = {"stepDefinitions","appHooks" }, 
                  monochrome = true, 
 		         dryRun = false, 
@@ -17,11 +17,11 @@ import io.cucumber.testng.CucumberOptions;
 				)
 public class TestRunner extends AbstractTestNGCucumberTests {
 	
-	/*
-	 * @Override
-	 * 
-	 * @DataProvider(parallel = true) public Object[][] scenarios() { return
-	 * super.scenarios(); }
-	 */
+	  @Override	  
+	  @DataProvider(parallel = true) public Object[][] scenarios() 
+	   {
+		 return
+	     super.scenarios();
+	 }
 	 
 }
