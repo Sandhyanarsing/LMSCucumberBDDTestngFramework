@@ -61,7 +61,7 @@ public class StepDef_AssignStaff {
 	    picoDepInj.assignStaff.dropDownVerification();
 	}
 	
-	@Then("Admin should see two radio button for Status")
+	@Then("Admin should see two radio buttons for Status")
 	public void admin_should_see_two_radio_button_for_status() {
 	    picoDepInj.assignStaff.verifyActiveRadioButtonStatus();
 	    assertTrue(picoDepInj.assignStaff.verifyActiveRadioButtonStatus(), "Active Radio Button is not present");
@@ -74,7 +74,7 @@ public class StepDef_AssignStaff {
 	    picoDepInj.assignStaff.clickSaveBtn();
 	}
 
-	@Then("Admin gets a Error message alert")
+	@Then("Admin gets Error message alert")
 	public void admin_gets_a_error_message_alert() {
 		picoDepInj.assignStaff.emptyFormErrorMessage();
 	    

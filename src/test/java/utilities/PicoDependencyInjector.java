@@ -19,6 +19,8 @@ public class PicoDependencyInjector {
 	 public ExcelReader excelreader;
 	 public POM_LoginPage loginPage;
 	 public POM_UserPageValidation userPageValidation;
+	 public POM_AssignStudent assignStudent;
+	 public POM_SortUser sortUser;
 	 public POM_ProgramPage programPage;
 	 public POM_AssignStaff assignStaff;
 	 public	POM_BatchPage batchPage;
@@ -31,6 +33,5 @@ public class PicoDependencyInjector {
 	 public String loggedInUsername;
 	 public	String registredUserName;
 
-	 public POM_AssignStudent assignStudent;
-	 public POM_SortUser sortUser;
+	 
 }
