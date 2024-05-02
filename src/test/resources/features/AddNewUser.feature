@@ -32,7 +32,7 @@ Then Admin gets message "User added Successfully"
 Then The newly added user should be present in the data table in Manage User page
 Examples: 
       | First name   | Middle name   | Last name  | Location   | Phone no   | Email address   | Linkedin Url                    | User Role   |User Role Status   | User Visa Status   | Under Graduate  | Post Graduate  | Time Zone  | User Comments |  
-      | Swath        | sdet          | Nin        |  usa       | 5601630915  | nut2@gmail.com   | https://www.linkedin.com/in/Numpy| R01        | Active             | H4                | b.tec           | MBA           | PST       | No Comments  |  
+      | Swath        | sdet          | Nin        |  usa       | 5601630914  | nut3@gmail.com   | https://www.linkedin.com/in/Numpy| R01        | Active             | H4                | b.tec           | MBA           | PST       | No Comments  |  
                     
 
 
