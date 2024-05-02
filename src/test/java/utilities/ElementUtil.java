@@ -234,4 +234,12 @@ public static void javaScriptType(WebDriver driver, WebElement element,long dura
 	}	
 }
 
+public static boolean textInsideInputBox(WebDriver driver, WebElement Element) {
+	// Check whether input field is blank
+	if((Element.getAttribute("value")).isEmpty())
+	{
+	   return true;
+	}else 
+	return false;
+	}
 }

@@ -1,5 +1,8 @@
 package utilities;
+import pageObjects.POM_AssignStudent;
 import pageObjects.POM_LoginPage;
+import pageObjects.POM_SortUser;
+import pageObjects.POM_UserPageValidation;
 
 
 public class PicoDependencyInjector {
@@ -17,5 +20,11 @@ public class PicoDependencyInjector {
 	 public String validPassword;
 	 public String loggedInUsername;
 	 public	String registredUserName;
+	 
+	public POM_UserPageValidation userPageValidation;
+	 
+	public POM_AssignStudent assignStudent;
+	public POM_SortUser sortUser;
+//	public String  
 	 
 }
