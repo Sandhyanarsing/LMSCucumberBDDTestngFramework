@@ -87,7 +87,7 @@ public class StepDef_AssignStudent {
 		
 	}
 	
-	@Then("Admin should see two radio button for Status")
+	@Then("admin should see two radio button for Status")
 	public void admin_should_see_two_radio_button_for_status() {
 		Assert.assertEquals(picoDepInj.assignStudent.statusRadiobuttonIsDisplayed(),true);
  
