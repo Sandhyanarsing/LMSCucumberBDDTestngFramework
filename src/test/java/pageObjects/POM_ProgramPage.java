@@ -1,5 +1,6 @@
 package pageObjects;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -18,10 +19,12 @@ import utilities.LoggerLoad;
 public class POM_ProgramPage {
 
 	private WebDriver driver ;
+	Actions action = null;
 	
 	public POM_ProgramPage(WebDriver driver){
 		
 		this.driver = driver;
+		action = new Actions(driver);
 		PageFactory.initElements(driver, this);
 	}
 		
@@ -72,6 +75,15 @@ public class POM_ProgramPage {
 		@FindBy(xpath = "//tbody[@class='p-datatable-tbody']//td[2]")
 		WebElement dataTablePrgmName;
 		
+		@FindBy(xpath = "//tbody[@class='p-datatable-tbody']//td[2]")
+		List<WebElement> dataTablePrgmNamelist;
+		
+		@FindBy(xpath = "//tbody[@class='p-datatable-tbody']//td[3]")
+		List<WebElement> dataTableDesclist;
+		
+		@FindBy(xpath = "//tbody[@class='p-datatable-tbody']//td[4]")
+		List<WebElement> dataTableStatuslist;
+		
 		@FindBy(xpath = "(//tbody[@class='p-datatable-tbody']//td[2])[1]")
 		WebElement FirstPrgmName;
 		
@@ -86,7 +98,6 @@ public class POM_ProgramPage {
 		
 		@FindBy(xpath = "(//table//tbody/tr/td[5]//button[@id='deleteProgram'])[1]")
 		WebElement deleteBtnFirstPrgm;
-		
 		
 		@FindBy(xpath = "(//table//tbody/tr/td[5]//button[@id='editProgram'])[1]")
 		WebElement editBtnFirstPrgm;
@@ -107,7 +118,6 @@ public class POM_ProgramPage {
 		
 		@FindBy(xpath = "//span[text()='Program Details']")
 		WebElement PrgPopUpTitle;
-		
 		
 		@FindBy(xpath = "//label[text()='Name']/following-sibling::input[contains(@class,'ng-invalid')]")
 		WebElement blankNameInputBox;
@@ -157,8 +167,6 @@ public class POM_ProgramPage {
 		@FindBy(xpath = "//div[text()='Programs Deleted']/..")
 		WebElement MultiDeleteSuccessfulMsg;
 		
-		
-		
 		@FindBy(xpath = "//div[text()='cannot create program , since already exists']/..")
 		WebElement existingPrgmAlertMsg;
 		
@@ -174,14 +182,8 @@ public class POM_ProgramPage {
 		@FindBy(xpath = "//span[contains(@class,'p-confirm-dialog-message')]")
 		WebElement deletePopUpText;
 			
-		
-		
-     
-		
-	      
-        
       @FindBy(xpath="//div/mat-card/mat-card-content/p-table/div/p-paginator/div/span[1]")
-	  WebElement paginatorFooterText;
+	  WebElement paginatorText;
 	
       @FindBy(xpath="//button[normalize-space()='1'])")
       WebElement btnFirstPage;
@@ -189,40 +191,48 @@ public class POM_ProgramPage {
 	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-right']")
 	WebElement btnSecondPage;
 	
-	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-double-right']")
+	@FindBy(xpath="//button[contains(@class,'p-paginator-first')]")
+	WebElement btnStartPage;	
+	
+	@FindBy(xpath="//button[contains(@class,'p-paginator-prev')]")
 	WebElement btnPreviousPage;
 	
-	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-left']")
+	@FindBy(xpath="//button[contains(@class,'p-paginator-next')]")
 	WebElement btnNextPage;
 	
-	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-double-right']")
+	@FindBy(xpath="//button[contains(@class,'p-paginator-last')]")
 	WebElement btnLastPage;
 	
-	@FindBy(xpath="//span[@class='p-paginator-icon pi pi-angle-double-left']")
-	WebElement btnStartPage;
+	@FindBy(xpath="//div[@class='p-d-flex p-ai-center p-jc-between ng-star-inserted']")
+	WebElement footerText;
 	
-	@FindBy(xpath="//span[@class='p-paginator-current ng-star-inserted']")
-	WebElement paginationEntriesCount;
- 
     @FindBy(xpath="//span[@class='p-paginator-pages.ng-star-inserted']")
     WebElement pagesCount;	
 
     @FindBy(xpath="//span[@class='p-paginator-pages ng-star-inserted']//button")
-    List<WebElement> PageNoButtonList;
-  
-
-    Actions action = new Actions(driver);
+    List<WebElement> PageNumButtonList;
     
-    public String GetPaginationShowEntries() {
-		return paginationEntriesCount.getText();
+    @FindBy(xpath="//p-sorticon[@field='programName']/i[contains(@class,'pi-sort-amount-up-alt')]")
+    WebElement prgNameSortIconUp;	
+
+    @FindBy(xpath="//p-sorticon[@field='programName']/i[contains(@class,'pi-sort-amount-down')]")
+    WebElement prgNameSortIconDown;	
+    
+    @FindBy(xpath="//p-sorticon[@field='programName']")
+    WebElement prgmSortIcon;
+    
+    @FindBy(xpath="//p-sorticon[@field='description']")
+    WebElement descSortIcon;
+    
+    @FindBy(xpath="//p-sorticon[@field='status']")
+    WebElement statusSortIcon;
+    
+	public String getPaginatorText() {
+		return paginatorText.getText();
 	}
 	
-	public String getFooterTotalRecord() {
-		return paginatorFooterText.getText();
-	}
-	
-	public boolean IsFirstpageLoaded() {
-		if (PageNoButtonList.size()>=1) 
+	public boolean IsFirstPageLoaded() {
+		if (PageNumButtonList.size()>=1) 
 		{
 			
 			action.moveToElement(btnFirstPage).click().build().perform();
@@ -231,46 +241,86 @@ public class POM_ProgramPage {
 		}
 		return false;
 	}
-	public boolean IsFirstpageButtonEnabled() {
-		if (PageNoButtonList.size()>=1) 
+	
+	
+   public boolean startAndPreviousPageLinkEnabled() {
+	  
+	if(btnStartPage.isEnabled() && btnPreviousPage.isEnabled()) {
+		
+		return true;
+	}
+	return false;
+	
+}
+	public boolean IsFirstPageButtonEnabled() {
+		if (PageNumButtonList.size()>=1) 
 			return btnFirstPage.isEnabled();
 		return false;
 	}
 	public boolean IsSecondpageLoaded() {
-		if (PageNoButtonList.size()>1) 
+		if (PageNumButtonList.size()>1) 
 			return btnSecondPage.isEnabled();
 		return false;
 	}
 	
 	public boolean IsSecondPageButtonEnabled() {
-		if (PageNoButtonList.size()>1) 
+		if (PageNumButtonList.size()>1) 
 			return btnSecondPage.isEnabled();
 		return false;
 	}
 	public void ClickPreviousNavigationButton() {
-		if (PageNoButtonList.size()>1) 
+		if (PageNumButtonList.size()>1) 
 			action.moveToElement(btnPreviousPage).click().build().perform();
 	}
 	public boolean IsPreviousNavigationDisabled() {
 		return btnPreviousPage.isEnabled();
 	}
 	
-	public boolean IsNextNavigationDisabled() {
-		return btnNextPage.isEnabled();
+	public boolean IsNextNavigationLinkEnabled() {
+		
+		if (PageNumButtonList.size()>1){ 
+			
+			return btnNextPage.isEnabled()==true;
+		}
+		
+		else {
+			return btnNextPage.isEnabled()==false;
+		}
 	}
+	
+	public String getTotalPrgCountFromFooter() {
+		
+		String fooText = footerText.getText();		
+		// In total there are 74 programs. 
+		String totalPrgmCount = fooText.trim().substring(19,fooText.length()-10);	   
+		return totalPrgmCount;
+	}
+	
+	public boolean paganitorTextForPreviousPageChange() {
+		return btnPreviousPage.isEnabled();
+	}
+	public boolean verifyNextNavButtonDisplayed() {
+		return btnNextPage.isDisplayed();
+	}
+	
 	public void ClickNextNavigationButton() {
-		if (PageNoButtonList.size()>1) 
+		if (PageNumButtonList.size()>1) 
 			action.moveToElement(btnNextPage).click().build().perform();
 	}
 
 	public void ClickStartNavigationButton() {
-		if (PageNoButtonList.size()>1) 
+		if (PageNumButtonList.size()>1) 
 			action.moveToElement(btnStartPage).click().build().perform();
 	}
 	
+	public void ClickFirstNavigationButton() {
+		if (PageNumButtonList.size()>1) 
+			action.moveToElement(btnFirstPage).click().build().perform();
+	}
 	public void ClickLastNavigationButton() {
-		if (PageNoButtonList.size()>1) 
-			action.moveToElement(btnStartPage).click().build().perform();
+		if (PageNumButtonList.size()>1) 
+			action.moveToElement(btnLastPage).click().build().perform();
+		
 	}
 	
 	public boolean verifyPaginationButtons()
@@ -280,15 +330,119 @@ public class POM_ProgramPage {
     		  btnPreviousPage.isDisplayed() &&
     		  btnNextPage.isDisplayed() &&
     		  btnLastPage.isDisplayed() &&
-		  paginatorFooterText.isDisplayed()) {
+		      paginatorText.isDisplayed()) {
 			return true;
-		}
+		  }
 		else{
 			return false;
+		   }
+	}  
+	
+	
+	public List<String> getTotalPrgNamesList() {
+		String totalPrgmCount =  footerText.getText().trim().substring(19, footerText.getText().length()-10);	
+		
+		int totalRow=Integer.parseInt(totalPrgmCount);  
+		
+		List<String> actualRowsData = new ArrayList<String>();
+		int x = totalRow%5;
+		int pages = totalRow/5;
+		if(x>0) {
+			pages = pages+1;
 		}
-		}      
+		for(int page=1; page<=pages; page++) {
+			if(page < pages) {
+				for(int i=0 ;i<5;i++) {//5 elements on one page
+					actualRowsData.add(dataTablePrgmNamelist.get(i).getText());
+				}
+				action.moveToElement(btnNextPage).click().build().perform();
+		  	} else {
+				for(int i=0 ;i<x;i++) {// elements on last page
+					actualRowsData.add(dataTablePrgmNamelist.get(i).getText());
+				}
+			 }
+		} 	
+			
+	System.out.println(actualRowsData);
 		
+	 return actualRowsData;
+	}
+	
+	public List<String> getDescList() {
+		String totalPrgmCount =  footerText.getText().trim().substring(19, footerText.getText().length()-10);	
 		
+		int totalRow=Integer.parseInt(totalPrgmCount);  
+		
+		List<String> actualRowsData = new ArrayList<String>();
+		int x = totalRow%5;
+		int pages = totalRow/5;
+		if(x>0) {
+			pages = pages+1;
+		}
+		for(int page=1; page<=pages; page++) {
+			if(page < pages) {
+				for(int i=0 ;i<5;i++) {//5 elements on one page
+					actualRowsData.add(dataTableDesclist.get(i).getText());
+				}
+				action.moveToElement(btnNextPage).click().build().perform();
+		  	} else {
+				for(int i=0 ;i<x;i++) {// elements on last page
+					actualRowsData.add(dataTableDesclist.get(i).getText());
+				}
+			 }
+		} 	
+			
+	System.out.println(actualRowsData);
+		
+	 return actualRowsData;
+	}
+	
+	public List<String> getStatusList() {
+		String totalPrgmCount =  footerText.getText().trim().substring(19, footerText.getText().length()-10);	
+		
+		int totalRow=Integer.parseInt(totalPrgmCount);  
+		
+		List<String> actualRowsData = new ArrayList<String>();
+		int x = totalRow%5;
+		int pages = totalRow/5;
+		if(x>0) {
+			pages = pages+1;
+		}
+		for(int page=1; page<=pages; page++) {
+			if(page < pages) {
+				for(int i=0 ;i<5;i++) {//5 elements on one page
+					actualRowsData.add(dataTableStatuslist.get(i).getText());
+				}
+				action.moveToElement(btnNextPage).click().build().perform();
+		  	} else {
+				for(int i=0 ;i<x;i++) {// elements on last page
+					actualRowsData.add(dataTableStatuslist.get(i).getText());
+				}
+			 }
+		} 	
+			
+	System.out.println(actualRowsData);
+		
+	 return actualRowsData;
+	}
+	
+	public void clickOnSortProgramBtn() {
+		
+		action.moveToElement(prgmSortIcon).click().build().perform();
+		
+	}
+    public void clickOnSortDescBtn() {
+		
+		action.moveToElement(descSortIcon).click().build().perform();
+		
+	}
+
+    public void clickOnSortStatusBtn() {
+	
+	action.moveToElement(statusSortIcon).click().build().perform();
+	
+   }
+
 		public String getProgramPageTitle() {
 			return driver.getTitle();
 		}
