@@ -97,7 +97,7 @@ public class StepDef_UserPageValidation {
 	}
 	
 	@Then("Each row in the data table should have a checkbox")
-	public void each_row_in_the_data_table_should_have_a_checkbox() {
+	public void each_row_in_the_data_table_should_have_checkbox() {
 	    picoDepInj.userPageValidation.verifyCheckbox();
 	    assertTrue(picoDepInj.userPageValidation.verifyCheckbox(), "Checkboxes are not present in each row of the table");
 	}
