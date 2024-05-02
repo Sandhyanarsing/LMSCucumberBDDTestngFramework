@@ -79,7 +79,7 @@ public class DriverFactory {
 			LoggerLoad.error("driver value is null, lets wait a second.");
 		}
 		WebDriver dri = thdriver.get();
-		LoggerLoad.error("driver value is :-"+dri);
+		LoggerLoad.info("driver value is :-"+dri);
 		return dri;
 	}
 }

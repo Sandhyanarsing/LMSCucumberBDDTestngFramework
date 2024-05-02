@@ -3,6 +3,8 @@ package stepDefinitions;
 import static org.testng.Assert.assertEquals;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import org.openqa.selenium.WebDriver;
@@ -597,128 +599,226 @@ public class StepDef_Program {
     
 	@When("admin validates the pagination icon below the data table")
 	public void admin_validates_the_pagination_icon_below_the_data_table() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		  String text = picoDepInj.programPage.getPaginatorText();
+		  Assert.assertTrue(text.contains("Showing 1 to 5 of"));
 	}
 
 	@Then("admin should see all the pagination controls under the data table")
 	public void admin_should_see_all_the_pagination_controls_under_the_data_table() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		
+		Assert.assertTrue(picoDepInj.programPage.verifyPaginationButtons());
 	}
 
-	@When("admin verifys Next page link status for more than {int} record on table")
-	public void admin_verifys_next_page_link_status_for_more_than_record_on_table(Integer int1) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@When("admin verifys Next page link status")
+	public void admin_verifys_Next_page_link_status() {
+		Assert.assertTrue(picoDepInj.programPage.verifyNextNavButtonDisplayed());
 	}
 
-	@Then("admin should see Next page link should be active on pagination")
-	public void admin_should_see_next_page_link_should_be_active_on_pagination() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("Next page link status should be enabled only for more than {int} record on table")
+	public void Next_page_link_status_should_be_enabled_only_for_more_than_5_record_on_table(Integer firstPageRowCount) {
+		
+		boolean nextLinkStatus = picoDepInj.programPage.IsNextNavigationLinkEnabled();
+		Assert.assertTrue(nextLinkStatus);
 	}
 
 	@When("admin click on active Next link on pagination")
 	public void admin_click_on_active_next_link_on_pagination() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.ClickNextNavigationButton();
 	}
 
 	@Then("Start and First page link should be active")
 	public void start_and_first_page_link_should_be_active() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		
+		Assert.assertTrue(picoDepInj.programPage.startAndPreviousPageLinkEnabled());
 	}
 
 	@When("admin clicks on active Last page link on pagination")
 	public void admin_clicks_on_active_last_page_link_on_pagination() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.ClickLastNavigationButton();
 	}
 
 	@Then("admin should see the last page record on the table with Next page link are disabled")
 	public void admin_should_see_the_last_page_record_on_the_table_with_next_page_link_are_disabled() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		LoggerLoad.info("validate next page link is disabled");
+		Assert.assertFalse(picoDepInj.programPage.IsNextNavigationLinkEnabled());
+		String totalRowCount = picoDepInj.programPage.getTotalPrgCountFromFooter();
+		String footerText = picoDepInj.programPage.getPaginatorText();
+		Assert.assertTrue(footerText.contains(totalRowCount+" of "+totalRowCount));
 	}
 
-	@When("admin clicks active First page link on pagination")
+	@When("admin clicks active previous page link on pagination")
 	public void admin_clicks_active_first_page_link_on_pagination() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.ClickPreviousNavigationButton();
 	}
-
-	@Then("admin should see the previous page record on the table with pagination has previous page link")
-	public void admin_should_see_the_previous_page_record_on_the_table_with_pagination_has_previous_page_link() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Then("admin should see the previous page record on the table with start and previous page link enabled")
+	public void admin_should_see_the_previous_page_record_on_the_table_with_start_and_previous_page_link_enabled() {
+		  
+		String tc = picoDepInj.programPage.getTotalPrgCountFromFooter();
+		String text = picoDepInj.programPage.getPaginatorText();
+		int count = Integer.parseInt(tc)%5==0?5:Integer.parseInt(tc)%5;
+		Assert.assertTrue(text.contains(Integer.parseInt(tc)-count+" of "+tc+" entries"));		
+		Assert.assertTrue(picoDepInj.programPage.startAndPreviousPageLinkEnabled());
 	}
 
 	@When("admin clicks active Start page link on pagination")
 	public void admin_clicks_active_start_page_link_on_pagination() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.ClickLastNavigationButton();;
+		picoDepInj.programPage.ClickStartNavigationButton();
 	}
 
 	@Then("admin should see the very first page record on the table with Previous and start page link are disabled")
 	public void admin_should_see_the_very_first_page_record_on_the_table_with_previous_and_start_page_link_are_disabled() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		 String text = picoDepInj.programPage.getPaginatorText();
+		  Assert.assertTrue(text.contains("Showing 1 to 5 of"));
+		  Assert.assertFalse(picoDepInj.programPage.startAndPreviousPageLinkEnabled());
 	}
 
 	@When("admin clicks the sort icon of program name column")
 	public void admin_clicks_the_sort_icon_of_program_name_column() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.clickOnSortProgramBtn();
 	}
 
 	@Then("table data should get sorted based upon the program name column values in ascending order")
 	public void table_data_should_get_sorted_based_upon_the_program_name_column_values_in_ascending_order() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		
+		 List<String> sortedRowData = picoDepInj.programPage.getTotalPrgNamesList();
+		 List<String> expectedSortedRowData = new ArrayList<>();
+		 
+		 LoggerLoad.info("prog name list after clicking prgm sort :-"+sortedRowData);
+		 
+		for(String s: sortedRowData) {
+			expectedSortedRowData.add(s);
+		}
+		Collections.sort(expectedSortedRowData, String.CASE_INSENSITIVE_ORDER);		
+		LoggerLoad.info("expected Sorted RowData :-"+expectedSortedRowData);
+		for(int i=0; i< expectedSortedRowData.size(); i++) {
+			if(!expectedSortedRowData.get(i).equals(sortedRowData.get(i))) {
+				
+				Assert.assertTrue(false);
+			}
+		}
+		Assert.assertTrue(true);
 	}
 
    @Then("table data should get sorted based upon the program name column values in descending order")
 	public void table_data_should_get_sorted_based_upon_the_program_name_column_values_in_descending_order() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	   List<String> sortedRowData = picoDepInj.programPage.getTotalPrgNamesList();
+		 List<String> expectedSortedRowData = new ArrayList<>();
+		 
+		 LoggerLoad.info("prog name list after clicking prgm sort :-"+sortedRowData);
+		 
+		for(String s: sortedRowData) {
+			expectedSortedRowData.add(s);
+		}
+		Collections.sort(expectedSortedRowData, String.CASE_INSENSITIVE_ORDER);		
+		Collections.reverse(expectedSortedRowData);
+		LoggerLoad.info("expected Sorted RowData :-"+expectedSortedRowData);
+		for(int i=0; i< expectedSortedRowData.size(); i++) {
+			if(!expectedSortedRowData.get(i).equals(sortedRowData.get(i))) {
+				
+				Assert.assertTrue(false);
+			}
+		}
+		Assert.assertTrue(true);
 	}
 
 	@When("admin clicks the sort icon of program description column")
 	public void admin_clicks_the_sort_icon_of_program_description_column() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.clickOnSortDescBtn();
 	}
 
 	@Then("table data should get sorted based upon the program description column values in ascending order")
 	public void table_data_should_get_sorted_based_upon_the_program_description_column_values_in_ascending_order() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		List<String> sortedRowData = picoDepInj.programPage.getDescList();
+		 List<String> expectedSortedRowData = new ArrayList<>();
+		 
+		 LoggerLoad.info("desc list after clicking prgm sort :-"+sortedRowData);
+		 
+		for(String s: sortedRowData) {
+			expectedSortedRowData.add(s);
+		}
+		Collections.sort(expectedSortedRowData, String.CASE_INSENSITIVE_ORDER);		
+		LoggerLoad.info("expected Sorted RowData :-"+expectedSortedRowData);
+		for(int i=0; i< expectedSortedRowData.size(); i++) {
+			if(!expectedSortedRowData.get(i).equals(sortedRowData.get(i))) {
+				
+				Assert.assertTrue(false);
+			}
+		}
+		Assert.assertTrue(true);
 	}
 
 	@Then("table data should get sorted based upon the program description column values in descending order")
 	public void table_data_should_get_sorted_based_upon_the_program_description_column_values_in_descending_order() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		List<String> sortedRowData = picoDepInj.programPage.getDescList();
+		 List<String> expectedSortedRowData = new ArrayList<>();
+		 
+		 LoggerLoad.info("desc list after clicking prgm sort :-"+sortedRowData);
+		 
+		for(String s: sortedRowData) {
+			expectedSortedRowData.add(s);
+		}
+		Collections.sort(expectedSortedRowData, String.CASE_INSENSITIVE_ORDER);	
+		Collections.reverse(expectedSortedRowData);
+		LoggerLoad.info("expected Sorted RowData :-"+expectedSortedRowData);
+		for(int i=0; i< expectedSortedRowData.size(); i++) {
+			if(!expectedSortedRowData.get(i).equals(sortedRowData.get(i))) {
+				
+				Assert.assertTrue(false);
+			}
+		}
+		Assert.assertTrue(true);
+
 	}
 
 	@When("admin clicks the sort icon of program status column")
 	public void admin_clicks_the_sort_icon_of_program_status_column() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		picoDepInj.programPage.clickOnSortStatusBtn();
 	}
 
 	@Then("table data should get sorted based upon the program status column values in ascending order")
 	public void table_data_should_get_sorted_based_upon_the_program_status_column_values_in_ascending_order() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		List<String> sortedRowData = picoDepInj.programPage.getStatusList();
+		 List<String> expectedSortedRowData = new ArrayList<>();
+		 
+		 LoggerLoad.info("status list after clicking prgm sort :-"+sortedRowData);
+		 
+		for(String s: sortedRowData) {
+			expectedSortedRowData.add(s);
+		}
+		Collections.sort(expectedSortedRowData, String.CASE_INSENSITIVE_ORDER);		
+		LoggerLoad.info("expected Sorted RowData :-"+expectedSortedRowData);
+		for(int i=0; i< expectedSortedRowData.size(); i++) {
+			if(!expectedSortedRowData.get(i).equals(sortedRowData.get(i))) {
+				
+				Assert.assertTrue(false);
+			}
+		}
+		Assert.assertTrue(true);
+
 	}
 
 	@Then("table data should get sorted based upon the program status column values in descending order")
 	public void table_data_should_get_sorted_based_upon_the_program_status_column_values_in_descending_order() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+		List<String> sortedRowData = picoDepInj.programPage.getStatusList();
+		 List<String> expectedSortedRowData = new ArrayList<>();
+		 
+		 LoggerLoad.info("status list after clicking prgm sort :-"+sortedRowData);
+		 
+		for(String s: sortedRowData) {
+			expectedSortedRowData.add(s);
+		}
+		Collections.sort(expectedSortedRowData, String.CASE_INSENSITIVE_ORDER);	
+		Collections.reverse(expectedSortedRowData);
+		LoggerLoad.info("expected Sorted RowData :-"+expectedSortedRowData);
+		for(int i=0; i< expectedSortedRowData.size(); i++) {
+			if(!expectedSortedRowData.get(i).equals(sortedRowData.get(i))) {
+				
+				Assert.assertTrue(false);
+			}
+		}
+		Assert.assertTrue(true);
+
 	}
 	
 }
