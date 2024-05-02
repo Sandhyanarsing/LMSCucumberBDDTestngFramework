@@ -1,6 +1,7 @@
 package utilities;
+import pageObjects.POM_AssignStaff;
 import pageObjects.POM_LoginPage;
-import pageObjects.POM_ProgramPage;
+import pageObjects.POM_UserPageValidation;
 
 
 public class PicoDependencyInjector {
@@ -12,12 +13,13 @@ public class PicoDependencyInjector {
 	 
 	 public ExcelReader excelreader;
 	 public POM_LoginPage loginPage;
-	 public POM_ProgramPage programPage;
+	 public POM_UserPageValidation userPageValidation;
+	 public POM_AssignStaff assignStaff;
 	 public String loginPageTitle;
 	 
-	 public String updatedPrgName;
-	 public String updatedPrgDesc;
-	 public String deletedPrgName;
-	 
+	 public String validUsername;
+	 public String validPassword;
+	 public String loggedInUsername;
+	 public	String registredUserName;
 	 
 }
