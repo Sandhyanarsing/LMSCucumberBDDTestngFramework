@@ -41,17 +41,17 @@ Then 	Admin should be able to see the "+A New batch" button
 @TC_Batch_Page_Validation_07
 Scenario: Validate data rows	in Batch Page  to verify checkbox
 When 	Admin clicks "Batch" from navigation bar in the Batch Page
-Then 	Each row in the data table should have a checkbox
+Then 	every row in the data table should have a checkbox
 
 @TC_Batch_Page_Validation_08
 Scenario: Validate data rows	in Batch Page to verify edit icon
 When 	Admin clicks "Batch" from navigation bar in the Batch Page
-Then 	Each row in the data table should have a edit icon that is enabled
+Then 	Each row in the data table should have edit icon which is enabled
 
 @TC_Batch_Page_Validation_09
 Scenario: Validate data rows	in Batch Page to verify delete icon
 When 	Admin clicks "Batch" from navigation bar in the Batch Page
-Then 	Each row in the data table should have a delete icon that is enabled
+Then 	Each row in the data table should have a delete icon which is enabled
 
 @TC_Batch_Page_Validation_10
 Scenario: Validate pop up for adding batch in Batch Page

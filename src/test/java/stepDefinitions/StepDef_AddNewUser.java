@@ -26,7 +26,7 @@ public class StepDef_AddNewUser {
 
 	}
 	
-	@Given("Admin is on Manage User Page")
+	@Given("Admin is on Manage User Page window")
 	public void admin_is_on_manage_user_page() {
 		picoDepInj.addnewUser = new POM_AddNewUser(DriverFactory.getDriver());
 		Assert.assertEquals(picoDepInj.addnewUser.getManageUserpageTitle(), "Manage User");
@@ -82,7 +82,7 @@ public class StepDef_AddNewUser {
 		 picoDepInj.addnewUser.getUserVisaStatusDropdownOptions();
 	}
 
-	@Given("Admin is on  User details pop up")
+	@Given("Admin is on  User details pop up window")
 	public void admin_is_on_user_details_pop_up() {
 		picoDepInj.addnewUser = new POM_AddNewUser(DriverFactory.getDriver());
 		Assert.assertEquals(picoDepInj.addnewUser.getManageUserpageTitle(), "Manage User");

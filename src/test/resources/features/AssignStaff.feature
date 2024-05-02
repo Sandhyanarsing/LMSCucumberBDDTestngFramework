@@ -38,7 +38,7 @@ Feature: Assign Staff
     	When Admin clicks User from navigation bar
     	Then Admin should see a heading with text Manage User on the page
     	When Admin clicks Assign Staff button
-    	Then Admin should see two radio button for Status
+    	Then Admin should see two radio buttons for Status
     	
     @ValidateEmptyFormSubmission
     Scenario: Empty Form Submission
@@ -47,7 +47,7 @@ Feature: Assign Staff
     	Then Admin should see a heading with text Manage User on the page
     	When Admin clicks Assign Staff button
     	When Admin clicks Save button without entering any data
-    	Then Admin gets a Error message alert 
+    	Then Admin gets Error message alert 
     	
     	@ValidateWithoutEmailId
     	Scenario: Validate the Assign Staff form page without giving Student Email id
