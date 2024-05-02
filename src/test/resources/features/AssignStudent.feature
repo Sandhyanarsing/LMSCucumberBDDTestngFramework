@@ -28,7 +28,7 @@ Scenario: Validate input fields and their text boxes in Assign Student form
 Scenario: Validate radio button in Assign Student Form
 	Given Admin is in manage user page
 	When Admin clicks Assign Student button
- Then Admin should see two radio button for Status
+ Then admin should see two radio button for Status
   
 Scenario: Empty Form Submission
 	Given Admin is in Assign Student details pop up page
