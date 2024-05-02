@@ -67,7 +67,7 @@ Background:
   Scenario: Verify Check box on the data table
   	Given Admin is on dashboard page after Login
   	When Admin clicks User from navigation bar
-  	Then Each row in the data table should have a checkbox
+  	Then Each row in the data table should have checkbox
   	
   @ValidateEditIcon
   Scenario: Verify edit icon on the data table
