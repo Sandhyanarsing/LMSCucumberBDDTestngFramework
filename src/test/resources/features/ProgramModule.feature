@@ -334,30 +334,30 @@ Background: User is already on LMS application Login page
           
   @ManageProgramPaginationValidation
   
-  Scenario: Pagination below data table validation for Manage Program module 
+  Scenario: Pagination under data table validation for Manage Program module 
     Given admin is on program page after Login
     When admin validates the pagination icon below the data table
-    Then admin should see all the pagination controls under the data table
-    When admin verifys Next page link status for more than 5 record on table
-    Then admin should see Next page link should be active on pagination
+    Then admin should see all the pagination controls under the data table 
+    When admin verifys Next page link status   
+    Then Next page link status should be enabled only for more than 5 record on table
     When admin click on active Next link on pagination
     Then Start and First page link should be active
     When admin clicks on active Last page link on pagination
-    Then admin should see the last page record on the table with Next page link are disabled
-    When admin clicks active First page link on pagination
-    Then admin should see the previous page record on the table with pagination has previous page link
+    Then admin should see the last page record on the table with Next page link are disabled           
+    When admin clicks active previous page link on pagination
+    Then admin should see the previous page record on the table with start and previous page link enabled
     When admin clicks active Start page link on pagination
     Then admin should see the very first page record on the table with Previous and start page link are disabled
     
     
     
   @ManageProgramSortingValidation
-  Scenario: Sorting below data table validation for Manage Program module 
-    Given admin is on program page after Login
+  Scenario: Sorting data table validation for Manage Program module 
+    Given admin is on program page after Login    
     When admin clicks the sort icon of program name column
-    Then table data should get sorted based upon the program name column values in ascending order
+    Then table data should get sorted based upon the program name column values in ascending order    
     When admin clicks the sort icon of program name column
-    Then table data should get sorted based upon the program name column values in descending order
+    Then table data should get sorted based upon the program name column values in descending order    
     When admin clicks the sort icon of program description column
     Then table data should get sorted based upon the program description column values in ascending order
     When admin clicks the sort icon of program description column
