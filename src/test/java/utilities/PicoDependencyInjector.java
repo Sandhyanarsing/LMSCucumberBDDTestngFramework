@@ -4,7 +4,8 @@ package utilities;
 import pageObjects.POM_AssignStudent;
 import pageObjects.POM_AssignStaff;
 import pageObjects.POM_BatchPage;
-
+import pageObjects.POM_DashboardPage;
+import pageObjects.POM_HomePage;
 import pageObjects.POM_AddNewUser;
 
 import pageObjects.POM_LoginPage;
@@ -22,9 +23,10 @@ public class PicoDependencyInjector {
 	 
 	 public ExcelReader excelreader;
 	 public POM_LoginPage loginPage;
+	 public POM_HomePage homepage;
+	 public POM_DashboardPage dashboardpage;
 	 public POM_AddNewUser addnewUser;
 	 public POM_UserPageValidation userPageValidation;
-
 	 public POM_ProgramPage programPage;
 	 public POM_AssignStaff assignStaff;
 	 public	POM_BatchPage batchPage;

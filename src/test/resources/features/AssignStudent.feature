@@ -70,7 +70,7 @@ And Admin clicks on Submit button
 Examples: 
       | First name   | Middle name   | Last name  | Location   | Phone no   | Email address   | Linkedin Url                    | User Role   |User Role Status   | User Visa Status   | Under Graduate  | Post Graduate  | Time Zone  | User Comments |  
       #| Sweth        | k              | k        |  usa       | 9256789000  | swe@gmail.com   | https://www.linkedin.com/in/Numpy| R03        | Active             | H4                | b.tec           | Msc           | PST       | No Comments  |
-			| Manu				 | m              |  m        |USA        |7094561238   | Man23@gmail.com   |https://www.linkedin.com/in/Numpy | R03        | Active             | H4                | Bsc             | Msc            | Pst       | nothing     |
+			| Manu				 | m              |  m        |USA        |7094561238   | Man8@gmail.com   |https://www.linkedin.com/in/Numpy | R03        | Active             | H4                | Bsc             | Msc            | Pst       | nothing     |
 
 Scenario Outline: Validate Save button on Assign Student form
 Given Admin is in Assign Student details pop up page 
