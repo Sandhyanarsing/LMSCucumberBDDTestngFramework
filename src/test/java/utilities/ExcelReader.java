@@ -15,9 +15,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 
-    public static String xlsxFilePath= "LMS_BDDFramework\\src\\test\\resources\\testData\\LMSTestData.xlsx";
+    public static String xlsxFilePath= "src\\test\\resources\\testData\\LMSTestData.xlsx";
     int totalRow;
-    
+   // G:\My Drive\SDET-146-Assignments-Projects\LMS_TestData.xlsx
     
 	public List<Map<String,String>> getTestDataFromSheet(String sheetName) throws IOException
 	{
@@ -54,13 +54,20 @@ public class ExcelReader {
 					Map<String,String> colMapData = new HashMap<String,String>();
 					
 					for(int currentCol=0; currentCol < totalCol; currentCol++)
-					{
-						XSSFCell cell=row.getCell(currentCol);
-						
+					{						
 						String colHeaderName= sheet.getRow(sheet.getFirstRowNum()).getCell(currentCol).getStringCellValue();
-						colMapData.put(colHeaderName, cell.getStringCellValue());
-				    }
-				    
+						XSSFCell cell=row.getCell(currentCol);
+						if(cell!=null) {							
+							if(cell.getStringCellValue() instanceof String) {
+								colMapData.put(colHeaderName, cell.getStringCellValue());
+							} else {
+								colMapData.put(colHeaderName, cell.getNumericCellValue()+"");
+							}
+							
+						} else {
+							colMapData.put(colHeaderName, "");
+						}												
+				    }				    
 					excelRows.add(colMapData);
 				}
 				

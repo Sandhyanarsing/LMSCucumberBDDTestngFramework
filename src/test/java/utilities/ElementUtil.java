@@ -36,6 +36,7 @@ public static WebElement waitForElementClickablity(WebDriver driver, WebElement 
 		}		
 		return webElement;
 	}
+
   public static void implicitPageWait(WebDriver driver) {	
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constant.IMPLICIT_PAGE_LOAD));//10sec
@@ -75,7 +76,6 @@ public static WebElement waitForElementClickablity(WebDriver driver, WebElement 
 		   }   
 		  }
 		 }
-	
 
 public static void clickOnElement(WebDriver driver, WebElement element, long durationInSeconds) {
 	
@@ -135,24 +135,6 @@ public static void selectDropDownOptionByVisibleText(WebDriver driver, WebElemen
 	Select select = new Select(webElement);
 	select.selectByVisibleText(dropdownOption);
 }
-
-public static void pythonTextIndentation(WebDriver driver, WebElement pythonElement, int row, int space,boolean flag) {
-		 
-	   Actions action = new Actions(driver);	
-	      for(int i=1;i<=row;i++) 
-	      {
-		      action.sendKeys(Keys.ARROW_UP).keyUp(Keys.SHIFT).perform();
-		       for(int j=1;j<=space;j++) 
-		       {
-	            if(i==1 && flag)
-	            	action.sendKeys(Keys.BACK_SPACE).perform();
-	            
-	            else action.sendKeys(Keys.DELETE).perform();
-			   }
-		}
-	}
-
-
 
 public static Alert isAlertPresent(WebDriver driver, long durationInSeconds) {
 	Alert alert = null;
